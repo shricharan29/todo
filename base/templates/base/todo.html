@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% if action == 'Add' %}
+<h1 class="center">Add Task</h1>
+{% else %}
+<h1 class="center">Edit Task</h1>
+{% endif %}
+
+<div class="form-div form-div-item">
+    <form method="post" action="">
+        {% csrf_token %}
+        {{todo_form.as_p}}
+        <input class="btn" type="submit" value="{{action}}">
+    </form>
+</div>
+
+{% endblock content %}

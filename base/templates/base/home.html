@@ -1,0 +1,76 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="center">
+    <h1>Todo Manager</h1>
+    {% if request.user.is_authenticated %}
+    <h2>Hello, {{user.username}}</h2>
+    {% endif %}
+</div>
+
+<div class="center" style="margin-bottom: 20px;">
+    <a class="btn" href="{% url 'add' %}">Add Task</a>
+    {% if tasks != 'none' %}
+    <a class="btn" href="{% url 'delete-completed' %}">Delete completed tasks</a>
+    {% endif %}
+</div>
+
+<div class="grid">
+    <div></div>
+    <div>
+        {% if tasks != 'none' %}
+        {% for task in tasks %}
+        <div class="main container">
+            <div class="main-top">
+                <!-- Status logic -->
+                <div>
+                    {% if task.done %}
+                    <span style="color: aliceblue;">Done</span>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="pending">
+                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                        <input class="btn" type="submit" value="Mark as Pending">
+                    </form>
+                    {% else %}
+                    <span style="color: aliceblue;">Pending</span>
+                    <form style="display: inline;" method="POST" action="">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="done">
+                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                        <input class="btn" type="submit" value="Mark as Done">
+                    </form>
+                    {% endif %}
+                </div>
+                <div style="padding: 18px;">
+                    <a class="btn" href="{% url 'edit' task.id %}">Edit</a>
+                    <a class="btn" href="{% url 'delete' task.id %}">Delete</a>
+                </div>
+            </div>
+
+            <h2 class="center">{{ task.title }}</h2>
+            <p class="note">{{ task.note }}</p>
+
+            <!-- Due logic -->
+            <div class="main-top" style="margin-bottom: 0px;">
+                <div>
+                    {% if task.due_date != None and task.due_time != None %}
+                    <h5>Due : {{task.due_date}} {{task.due_time}}</h5>
+                    {% elif task.due_date == None and task.due_time != None %}
+                    <h5>Due Time : {{task.due_time}}</h5>
+                    {% elif task.due_date != None and task.due_time == None %}
+                    <h5>Due Time : {{task.due_date}}</h5>
+                    {% endif %}
+                </div>
+                <div>
+                    <h5>{{task.created|timesince}} ago</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div></div>
+</div>
+
+{% endblock content %}

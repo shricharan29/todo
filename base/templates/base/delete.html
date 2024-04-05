@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="form-div">
+    <div class="form-div-item">
+        <p>Do you want to delete <strong>{{task}}</strong> ?</p>
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <input class="btn btn-danger" type="submit" value="Yes">
+            <a id="back" href="{% url 'home' %}">Go Back</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}

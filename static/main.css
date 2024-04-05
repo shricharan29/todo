@@ -1,0 +1,128 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #b1afff;
+    margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+small,
+strong {
+    color: aliceblue;
+}
+
+#back {
+    color: aliceblue;
+    border: 2px solid aliceblue;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 10px;
+    background-color: yellowgreen;
+    text-decoration: none;
+}
+
+.btn {
+    background-color: #b1afff;
+    color: aliceblue;
+    border: 2px solid aliceblue;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: medium;
+    margin: 10px;
+    text-decoration: none;
+}
+
+textarea {
+    font-size: 18px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    border: 2px black solid;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 3px;
+    height: 40px;
+    font-size: 25px;
+}
+
+.btn-danger {
+    background-color: rgb(255, 58, 58);
+}
+
+.nav {
+    background-color: rgb(140, 144, 204);
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-link {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: rgb(163, 212, 255);
+}
+
+.center {
+    text-align: center;
+}
+
+.main {
+    background-color: #7773f7;
+    padding: 10px;
+    margin: 20px;
+    border: 6px double;
+    border-radius: 16px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.form-div {
+    width: fit-content;
+    margin-inline: auto;
+    margin-top: 9vh;
+}
+
+.form-div-item {
+    padding: 20px;
+    margin: auto;
+    background-color: rgb(104, 184, 255);
+    color: black;
+    border: 3px double black;
+    border-radius: 4px;
+}
+
+.main-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.note {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-inline: 15px;
+    color: aliceblue;
+}
+
+@media only screen and (max-width: 850px) {
+    .grid {
+        display: grid;
+        grid-template-columns: 0% 100% 0%;
+    }
+}
